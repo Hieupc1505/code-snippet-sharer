@@ -25,6 +25,7 @@ type Config struct {
 	GithubClientSecret      string
 	SymmetricKey            string
 	TemplateDir             string
+	GithubCallback          string
 }
 
 const (
@@ -62,6 +63,7 @@ func initConfig() Config {
 		GithubClientID:          getEnvOrError("GITHUB_CLIENT_ID"),
 		GithubClientSecret:      getEnvOrError("GITHUB_CLIENT_SECRET"),
 		DBSource:                getEnvOrError("DB_SOURCE"),
+		GithubCallback:          getEnvOrError("GITHUB_CALLBACK"),
 	}
 }
 

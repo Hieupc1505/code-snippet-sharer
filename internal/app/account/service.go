@@ -9,6 +9,7 @@ import (
 	"github.com/markbates/goth/providers/github"
 	db "s-coder-snippet-sharder/internal/db/sqlc"
 	"s-coder-snippet-sharder/pkg/config"
+	"s-coder-snippet-sharder/types"
 )
 
 var (
@@ -39,12 +40,16 @@ func (s *Service) RegisterAuthService() {
 		github.New(
 			config.Envs.GithubClientID,
 			config.Envs.GithubClientSecret,
-			buildCallbackURL("github"),
+			buildCallbackURL(types.GithubKey),
 		),
 	)
 }
 
 func buildCallbackURL(provider string) string {
+	switch provider {
+	case types.GithubKey:
+		return config.Envs.GithubCallback
+	}
 	return fmt.Sprintf("%s:%s/api/auth/%s/callback", config.Envs.PublicHost, config.Envs.Port, provider)
 }
 
