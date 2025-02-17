@@ -23,6 +23,7 @@ type Config struct {
 	DiscordClientSecret     string
 	GithubClientID          string
 	GithubClientSecret      string
+	SymmetricKey            string
 }
 
 const (
@@ -45,6 +46,7 @@ func initConfig() Config {
 		DBUser:                  getEnv("DB_USER", "root"),
 		DBPassword:              getEnv("DB_PASSWORD", "mypassword"),
 		DBSource:                getEnvOrError("DB_SOURCE"),
+		SymmetricKey:            getEnvOrError("SYMMETRIC_KEY"),
 		DBName:                  getEnv("DB_NAME", "cars"),
 		CookiesAuthSecret:       getEnv("COOKIES_AUTH_SECRET", "some-very-secret-key"),
 		CookiesAuthAgeInSeconds: getEnvAsInt("COOKIES_AUTH_AGE_IN_SECONDS", twoDaysInSeconds),

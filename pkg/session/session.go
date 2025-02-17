@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/session"
+	"s-coder-snippet-sharder/types"
 	"sync"
 	"time"
 )
@@ -17,7 +18,7 @@ var (
 func InitSessionStore() {
 	once.Do(func() {
 		config := session.Config{
-			KeyLookup:      "cookie:session_id",
+			KeyLookup:      types.SessionKey,
 			CookieHTTPOnly: true,
 			Expiration:     24 * time.Hour, // Session hết hạn sau 24h
 		}

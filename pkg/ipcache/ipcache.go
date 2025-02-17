@@ -38,7 +38,7 @@ func backgroundCacheClearer(c *Cache) func() {
 				c.mu.Lock()
 				defer c.mu.Unlock()
 
-				slog.Info("Checking IP cache for stale IP's")
+				//slog.Info("Checking IP cache for stale IP's")
 				//Every 30 seconds, check every ip in the cache to see if it can be deleted.
 				for ip, item := range c.cache {
 					if item.InitialRequestTime.Before(time.Now().Add(-itemLifeMinutes * time.Minute)) {

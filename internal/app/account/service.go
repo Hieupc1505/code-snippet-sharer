@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/markbates/goth"
 	"github.com/markbates/goth/gothic"
-	"github.com/markbates/goth/providers/discord"
 	"github.com/markbates/goth/providers/github"
 	db "s-coder-snippet-sharder/internal/db/sqlc"
 	"s-coder-snippet-sharder/pkg/config"
@@ -37,11 +36,6 @@ func (s *Service) RegisterAuthService() {
 	gothic.Store = nil
 
 	goth.UseProviders(
-		discord.New(
-			"1340236489660956672",
-			"35c22f2bec4b3f861344e160546c7ce9e3231da3ad92ddd5f875cf319d6bd803",
-			buildCallbackURL("discord"),
-		),
 		github.New(
 			config.Envs.GithubClientID,
 			config.Envs.GithubClientSecret,

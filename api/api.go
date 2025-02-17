@@ -18,6 +18,7 @@ import (
 	"s-coder-snippet-sharder/internal/app"
 	"s-coder-snippet-sharder/internal/app/account"
 	"s-coder-snippet-sharder/internal/app/snippet"
+	"s-coder-snippet-sharder/pkg/config"
 	"s-coder-snippet-sharder/pkg/ipcache"
 	"s-coder-snippet-sharder/pkg/sup"
 	"s-coder-snippet-sharder/pkg/token"
@@ -83,7 +84,7 @@ func New(
 		log.Fatal("Failed to parse template ", "error", err)
 	}
 
-	token, err := token.NewPasetoMaker("01234567890123456789012345678912") //todo: add key to env file
+	token, err := token.NewPasetoMaker(config.Envs.SymmetricKey) //todo: add key to env file
 	if err != nil {
 		log.Fatal("Failed to create token maker ", "error", err)
 	}
