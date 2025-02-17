@@ -1,0 +1,15 @@
+{{ define "Action" }}
+
+<div id="action">
+    <button hx-get="/snippets/test" hx-target="body" hx-swap="outerHTML">Send request to backend</button>
+    <p>
+        Status:
+        {{ if eq .Status "sent" }}
+        Sent
+        {{ else }}
+        Unsend
+        {{ end }}
+    </p>
+</div>
+
+{{ end }}

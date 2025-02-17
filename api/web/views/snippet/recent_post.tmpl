@@ -1,0 +1,16 @@
+
+{{ $snippets := .Snippets }}
+
+{{ if $snippets }}
+    {{ range $snippet := $snippets }}
+        {{ template "posts" WithComData
+            "Title" $snippet.Title
+            "Lang" $snippet.Lang
+            "Views" $snippet.ViewCount
+            "Code" $snippet.Snippet
+            "Slug" $snippet.Slug
+        }}
+    {{ end }}
+{{ else }}
+    <p class="text-center">Dont have any snippet</p>
+{{ end }}

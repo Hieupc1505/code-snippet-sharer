@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+:root {
+    --size-2xs: 4px;
+    --size-tiny: 6px;
+    --size-xs: 8px;
+    --size-s: 12px;
+    --size-ms: 16px;
+    --size-m: 20px;
+    --size-ml: 24px;
+    --size-l: 32px;
+    --size-xl: 36px;
+    --size-2xl: 48px;
+    --size-3xl: 56px;
+    --size-4xl: 64px;
+    --size-5xl: 72px;
+
+    --pink-900: 120 40 50;
+    --pink-800: 200 80 60;
+    --pink-700: 220 100 85;
+    --pink-600: 235 120 105;
+    --pink-500: 255 148 130;
+    --pink-400: 255 165 150;
+    --pink-300: 255 180 170;
+    --pink-200: 255 200 190;
+    --pink-100: 255 220 210;
+    --pink-50: 255 240 235;
+
+    --blue: 123 119 250;
+    --blue-900: 60 58 190;
+    --blue-800: 72 66 200;
+    --blue-700: 92 88 225;
+    --blue-600: 110 105 235;
+    --blue-500: 123 119 250;
+    --blue-400: 145 138 255;
+    --blue-300: 168 161 255;
+    --blue-200: 192 185 255;
+    --blue-100: 216 210 255;
+    --blue-50: 240 235 255;
+
+}
+
+@layer base {
+    * {
+        box-sizing: border-box;
+    }
+    html, body,
+    #root {
+        height: 100%;
+        margin: 0;
+    }
+    body {
+        @apply text-sf-ms text-white bg-bgColor;
+    }
+}
+
+@theme {
+
+    --color-bgColor: var(--color-gray-700);
+    --color-bgColor-lighter: rgba(48, 48, 48, 1);
+    --color-errColor: var(--color-red-500);
+
+    --color-border: #ececec;
+    --color-text: #303030;
+    --color-info: #006aff;
+    --color-warning: #ff0000;
+
+    --color-primColor: rgb(var(--pink-500));
+    --color-primColor-900: rgb(var(--pink-900));
+    --color-primColor-800: rgb(var(--pink-800));
+    --color-primColor-700: rgb(var(--pink-700));
+    --color-primColor-600: rgb(var(--pink-600));
+    --color-primColor-500: rgb(var(--pink-500));
+    --color-primColor-400: rgb(var(--pink-400));
+    --color-primColor-300: rgb(var(--pink-300));
+    --color-primColor-200: rgb(var(--pink-200));
+    --color-primColor-100: rgb(var(--pink-100));
+    --color-primColor-50: rgb(var(--pink-50));
+
+    --color-secondColor: rgb(var(--blue));
+    --color-secondColor-900: rgb(var(--blue-900));
+    --color-secondColor-800: rgb(var(--blue-800));
+    --color-secondColor-700: rgb(var(--blue-700));
+    --color-secondColor-600: rgb(var(--blue-600));
+    --color-secondColor-500: rgb(var(--blue-500));
+    --color-secondColor-400: rgb(var(--blue-400));
+    --color-secondColor-300: rgb(var(--blue-300));
+    --color-secondColor-200: rgb(var(--blue-200));
+    --color-secondColor-100: rgb(var(--blue-100));
+    --color-secondColor-50: rgb(var(--blue-50));
+
+    --text-sf-2xs: var(--size-2xs);
+    --text-sf-tiny: var(--size-tiny);
+    --text-sf-xs: var(--size-xs);
+    --text-sf-s: var(--size-s);
+    --text-sf-ms: var(--size-ms);
+    --text-sf-m: var(--size-m);
+    --text-sf-ml: var(--size-ml);
+    --text-sf-l: var(--size-l);
+    --text-sf-xl: var(--size-xl);
+    --text-sf-2xl: var(--size-2xl);
+    --text-sf-3xl: var(--size-3xl);
+    --text-sf-4xl: var(--size-4xl);
+    --text-sf-5xl: var(--size-5xl);
+
+    --leading-sf-2xs: var(--size-2xs);
+    --leading-sf-tiny: var(--size-tiny);
+    --leading-sf-xs: var(--size-xs);
+    --leading-sf-s: var(--size-s);
+    --leading-sf-ms: var(--size-ms);
+    --leading-sf-m: var(--size-m);
+    --leading-sf-ml: var(--size-ml);
+    --leading-sf-l: var(--size-l);
+    --leading-sf-xl: var(--size-xl);
+    --leading-sf-2xl: var(--size-2xl);
+    --leading-sf-3xl: var(--size-3xl);
+    --leading-sf-4xl: var(--size-4xl);
+    --leading-sf-5xl: var(--size-5xl);
+
+    --spacing-sf-2xs: var(--size-2xs);
+    --spacing-sf-tiny: var(--size-tiny);
+    --spacing-sf-xs: var(--size-xs);
+    --spacing-sf-s: var(--size-s);
+    --spacing-sf-ms: var(--size-ms);
+    --spacing-sf-m: var(--size-m);
+    --spacing-sf-ml: var(--size-ml);
+    --spacing-sf-l: var(--size-l);
+    --spacing-sf-xl: var(--size-xl);
+    --spacing-sf-2xl: var(--size-2xl);
+    --spacing-sf-3xl: var(--size-3xl);
+    --spacing-sf-4xl: var(--size-4xl);
+    --spacing-sf-5xl: var(--size-5xl);
+
+    --radius-sf-full: 9999px;
+    --radius-sf-2xs: var(--size-2xs);
+    --radius-sf-tiny: var(--size-tiny);
+    --radius-sf-xs: var(--size-xs);
+    --radius-sf-s: var(--size-s);
+    --radius-sf-ms: var(--size-ms);
+    --radius-sf-m: var(--size-m);
+    --radius-sf-ml: var(--size-ml);
+    --radius-sf-l: var(--size-l);
+    --radius-sf-xl: var(--size-xl);
+    --radius-sf-2xl: var(--size-2xl);
+    --radius-sf-3xl: var(--size-3xl);
+    --radius-sf-4xl: var(--size-4xl);
+    --radius-sf-5xl: var(--size-5xl);
+}
+
+.flex-1 {
+    flex: 1;
+}

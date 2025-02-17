@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {{ if .View.AppTitle }}
+        <title>{{ .View.AppTitle }}</title>
+    {{ else }}
+        <title>{{ .View.AppName }}</title>
+    {{ end }}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/assets/dist/output.css" rel="stylesheet" />
+    <link id="hljs-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="/assets/main.js"></script>
+    <script type="text/javascript" src="/assets/toast.js"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          hljs.highlightAll();
+        });
+        document.addEventListener("DOMContentLoaded", () => {
+            if (document.body) {
+                document.body.addEventListener("htmx:afterSwap", () => {
+                    requestAnimationFrame(() => {
+                        document.querySelectorAll("pre code").forEach((block) => {
+                            hljs.highlightElement(block);
+                        });
+                    });
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    {{ template "toast" . }}
+    <div class="bg-bgColor">
+            {{ template "header" . }}
+            <main class="w-full max-w-2xl mx-auto">{{embed}}</main>
+            {{ template "footer" . }}
+    </div>
+
+
+
+</body>
+</html>

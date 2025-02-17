@@ -1,0 +1,31 @@
+<div>
+   <h1>Highlight.js + HTMX</h1>
+   <pre><code class="language-go">package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World!")
+}</code></pre>
+   <button class="outline border p-[12px]" hx-get="/api/user/code" hx-trigger="click" hx-target="#code-block">
+   Load Code Snippet
+   </button>
+   <pre style="white-space: pre;">
+    <code class="language-{{ .Lang }}">{{ .Code }}</code>
+</pre>
+   <div id="code-block">
+      <!-- Mã nguồn sẽ được tải vào đây -->
+   </div>
+   <div class="h-[30vh] bg-primColor">
+      <p class="text-sf-xl">Hello world!</p>
+   </div>
+   {{ template "select" WithComData
+   "Label" "Years of experience"
+   "Name" "experience_years"
+   "Options" (Slice
+   (Map "Label" "Up to 2" "Value" "0 - 2 Years")
+   (Map "Label" "Up to 4" "Value" "2 - 4 Years")
+   (Map "Label" "Up to 6" "Value" "4 - 6 Years")
+   )
+   }}
+</div>

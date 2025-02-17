@@ -1,0 +1,31 @@
+{{ define "input" -}}
+
+{{$label := .Label}}
+{{$name := .Name}}
+{{$placeholder := .Placeholder}}
+{{$type := .Type}}
+{{$value := .Value}}
+{{$id := (printf "form__%v" $name)}}
+
+{{if and $type $name }}
+<div class="form-control w-full">
+    {{ if $label }}
+    <label class="label" for="{{$id}}">
+        <span class="label-text">{{$label}}</span>
+    </label>
+    {{end}}
+
+    <input
+            class="w-full border border-solid border-white text-sf-ms text-white px-sf-2xs py-sf-xs outline-none"
+            {{ if or $id $label}}id="{{$id}}"{{end}}
+            type="{{$type}}"
+            name="{{$name}}"
+            {{if $value}}value="{{$value}}"{{end}}
+            {{if $placeholder}}placeholder="{{$placeholder}}"{{end}}
+    />
+</div>
+{{else}}
+    <p>Form input component: required fields: Type, Name.</p>
+{{end}}
+
+{{ end }}

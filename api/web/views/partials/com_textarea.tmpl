@@ -1,0 +1,28 @@
+{{ define "textarea" -}}
+{{$label := .Label}}
+{{$name := .Name}}
+{{$placeholder := .Placeholder}}
+{{$value := .Value}}
+{{$id := (printf "form__%v" $name)}}
+
+{{if $name }}
+    <div class="form-control w-full">
+        {{ if $label }}
+        <label class="label" for="{{$id}}">
+            <span class="label-text">{{$label}}</span>
+        </label>
+        {{end}}
+
+        <textarea
+                class="w-full border border-white border-solid text-white text-sf-ms py-sf-xs px-sf-2xs outline-none "
+                rows="10"
+                {{ if or $id $label}}id="{{$id}}"{{end}}
+                name="{{$name}}"
+                {{if $placeholder}}placeholder="{{$placeholder}}"{{end}}
+                {{if $value}}{{$value}}{{end}}></textarea>
+    </div>
+{{else}}
+    <p>Form textarea component: required field: Name.</p>
+{{end}}
+
+{{ end }}

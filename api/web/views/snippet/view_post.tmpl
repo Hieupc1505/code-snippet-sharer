@@ -1,0 +1,31 @@
+
+{{ $snippet := .Snippet }}
+
+{{ if .Snippet }}
+
+<div class="view-post space-y-sf-s">
+    <h2 class="text-sf-m font-bold">{{ $snippet.Title }}</h2>
+    <div class="flex gap-sf-2xs">
+        <button class="px-sf-m bg-linear-to-r from-primColor-500 to-secondColor-500 py-sf-2xs text-sf-s text-white bg-gray-600 font-bold rounded-full">{{ $snippet.Lang }}</button>
+        <button class="px-sf-xs py-sf-2xs text-sf-s text-white bg-gray-600 font-bold rounded-full flex gap-sf-2xs justify-center items-center">
+            <svg class="size-sf-s" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 17.8c4.034 0 7.686-2.25 9.648-5.8C19.686 8.45 16.034 6.2 12 6.2S4.314 8.45 2.352 12c1.962 3.55 5.614 5.8 9.648 5.8M12 5c4.808 0 8.972 2.848 11 7c-2.028 4.152-6.192 7-11 7s-8.972-2.848-11-7c2.028-4.152 6.192-7 11-7m0 9.8a2.8 2.8 0 1 0 0-5.6a2.8 2.8 0 0 0 0 5.6m0 1.2a4 4 0 1 1 0-8a4 4 0 0 1 0 8"/></svg>
+            <span>{{ $snippet.ViewCount }}</span>
+        </button>
+    </div>
+    <div class="relative">
+        <div class="absolute top-sf-ms right-sf-ms" onclick="copyCode(document.getElementById('codeSnippet'), this)">
+            <svg class="size-sf-m text-white hover:cursor-pointer hover:text-primColor" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+                <path fill="currentColor" d="M22.6 4h-1.05a3.89 3.89 0 0 0-7.31 0h-.84A2.41 2.41 0 0 0 11 6.4V10h14V6.4A2.41 2.41 0 0 0 22.6 4m.4 4H13V6.25a.25.25 0 0 1 .25-.25h2.69l.12-1.11a1.24 1.24 0 0 1 .55-.89a2 2 0 0 1 3.15 1.18l.09.84h2.9a.25.25 0 0 1 .25.25Z" class="clr-i-outline clr-i-outline-path-1" />
+                <path fill="currentColor" d="M33.25 18.06H21.33l2.84-2.83a1 1 0 1 0-1.42-1.42l-5.25 5.25l5.25 5.25a1 1 0 0 0 .71.29a1 1 0 0 0 .71-1.7l-2.84-2.84h11.92a1 1 0 0 0 0-2" class="clr-i-outline clr-i-outline-path-2" />
+                <path fill="currentColor" d="M29 16h2V6.68A1.66 1.66 0 0 0 29.35 5h-2.27v2H29Z" class="clr-i-outline clr-i-outline-path-3" />
+                <path fill="currentColor" d="M29 31H7V7h2V5H6.64A1.66 1.66 0 0 0 5 6.67v24.65A1.66 1.66 0 0 0 6.65 33h22.71A1.66 1.66 0 0 0 31 31.33v-9.27h-2Z" class="clr-i-outline clr-i-outline-path-4" />
+                <path fill="none" d="M0 0h36v36H0z" />
+            </svg>
+        </div>
+        <pre class="whitespace-pre-wrap overflow-hidden m-0 inline-flex rounded-md w-full">
+            <code id="codeSnippet" class="language-{{ .Lang }} !px-sf-s !py-sf-xs rounded-sf-s w-full text-sf-s" >{{ $snippet.Snippet }}</code>
+        </pre>
+    </div>
+</div>
+
+{{ end }}

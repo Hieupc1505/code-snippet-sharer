@@ -1,0 +1,52 @@
+
+<div class="w-full space-y-sf-m">
+<form hx-post="/api/snippets/add" hx-target="body"  class="space-y-sf-m" >
+    {{ template "select" WithComData
+        "Name" "lang"
+        "Options" (Slice
+            (Map "Label" "YAML" "Value" "yaml")
+            (Map "Label" "Go" "Value" "go")
+            (Map "Label" "Javascript" "Value" "js")
+            (Map "Label" "Python" "Value" "py")
+            (Map "Label" "Java" "Value" "java")
+        )
+    }}
+
+    {{ template "input" WithComData
+        "Type" "text"
+        "Name" "title"
+        "Placeholder" "Give your code a title"
+    }}
+
+    {{ template "textarea" WithComData
+        "Type" "text"
+        "Name" "snippet"
+        "Placeholder" "Paste your code in here!"
+    }}
+
+    <div class="form-control flex flex-start gap-sf-xs items-center">
+        <p class=" text-sf-ms">
+            Share to the community?
+        </p>
+        <label class="inline-flex items-center cursor-pointer">
+            <input type="checkbox" value="true" class="sr-only peer" name="public">
+            <div class="relative w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300
+            dark:peer-focus:ring-blue-800 rounded-full peer  peer-checked:after:translate-x-full
+            rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute
+            after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full
+            after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+        </label>
+    </div>
+<!--    {{ if .error }}-->
+<!--        <p class="text-errColor">{{ .ErrorMessage }}</p>-->
+<!--    {{end}}-->
+    <div class="flex justify-center">
+        <button type="submit" class="hover:cursor-pointer px-sf-xs py-sf-s bg-white text-sf-ms font-bold text-black rounded-sf-xs">Create post</button>
+    </div>
+</form>
+    <div class="recent-post p-sf-s bg-bgColor-lighter rounded-sf-ms">
+        <h3 class="text-sf-m font-bold text-white pb-sf-xs">Recent posts</h3>
+        <div class="grid grid-cols-2 gap-sf-s" hx-get="/snippets/recent" hx-swap="innerHTML" hx-trigger="load">
+        </div>
+    </div>
+</div>

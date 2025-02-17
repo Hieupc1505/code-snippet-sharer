@@ -1,0 +1,58 @@
+{{ define "select" -}}
+
+{{$label := .Label}}
+{{$name := .Name}}
+{{$placeholder := .Placeholder}}
+{{$type := .Type}}
+{{$value :=.Value}}
+{{$id := (printf "form__%v" $name)}}
+{{$options := .Options}}
+
+{{if $name}}
+<div class="form-control w-full">
+    {{if $label}}
+    <label
+            class="label"
+            for="{{$id}}"
+    >
+        <span class="label-text">{{$label}}</span>
+    </label>
+    {{end}}
+
+    <select
+            class="w-full border-1 border-white border-solid py-sf-xs px-sf-2xs text-white text-sf-ms hover:cursor-pointer bg-bgColor outline-none"
+            {{if or $id $label}}id="{{$id}}"{{end}}
+            type="{{$type}}"
+            name="{{$name}}"
+            {{if $placeholder}}placeholder="{{$placeholder}}"{{end}}
+            {{if $value}}value="{{$value}}"{{end}}
+    >
+        {{if $placeholder}}
+        <option value="" hidden disabled{{if not $value}} selected{{end}}>{{$placeholder}}</option>
+        {{end}}
+
+        {{ range $option := $options}}
+        {{if $option.Options}}
+        <optgroup label="{{$option.Label}}">
+            {{ range $option := $option.Options }}
+            {{$optval := or $option.Value $option.Label $option}}
+            {{$optlabel := or $option.Label $option.Value $option}}
+
+            <option value="{{$optval}}"{{if eq $optval $value}} selected{{end}}>{{$optlabel}}</option>
+            {{end}}
+        </optgroup>
+        {{else}}
+        {{$optval := or $option.Value $option.Label $option}}
+        {{$optlabel := or $option.Label $option.Value $option}}
+
+        <option value="{{$optval}}"{{if eq $optval $value}} selected{{end}}>{{$optlabel}}</option>
+        {{end}}
+        {{end}}
+    </select>
+</div>
+{{else}}
+<p>Form input component: required fields: Name.</p>
+{{end}}
+
+
+{{ end }}
