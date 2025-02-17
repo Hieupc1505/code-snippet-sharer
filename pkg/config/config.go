@@ -31,8 +31,12 @@ const (
 )
 
 func LoadConfig() Config {
-	if err := godotenv.Load(); err != nil {
-		log.Fatal(err)
+	// Kiểm tra xem file .env có tồn tại không
+	if _, err := os.Stat(".env"); err == nil {
+		// Nếu file .env tồn tại, load nó
+		if err := godotenv.Load(); err != nil {
+			log.Fatal("Error loading .env file: ", err)
+		}
 	}
 	return initConfig()
 }
