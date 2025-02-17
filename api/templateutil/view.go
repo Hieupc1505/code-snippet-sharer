@@ -5,9 +5,8 @@ import (
 	"html/template"
 	"log/slog"
 	"path/filepath"
+	"s-coder-snippet-sharder/pkg/config"
 )
-
-const TemplateDir = "/home/hieupc05/dev/s-coder-snippet-sharder/api/web/views" // path to views source directory
 
 type View struct {
 	NamedEndpoints NamedEndpoints
@@ -16,7 +15,7 @@ type View struct {
 }
 
 func ParseFiles() (*template.Template, error) {
-	pattern := filepath.Join(TemplateDir, "*", "com_*.tmpl")
+	pattern := filepath.Join(config.Envs.TemplateDir, "*", "com_*.tmpl")
 	tmpl := template.New("")
 	tmpl.Funcs(template.FuncMap{
 		"GetFromMap":  GetFromMap,

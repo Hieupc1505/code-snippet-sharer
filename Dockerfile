@@ -3,12 +3,6 @@ WORKDIR /app
 RUN apt-get update -qq && \
 	apt-get install --no-install-recommends -y build-essential pkg-config python-is-python3 upx
 
-RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && \
-	apt-get install -y nodejs \
-	build-essential && \
-	node --version && \
-	npm --version
-
 # install zig toolchain
 RUN wget https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz && \
 	tar -xf zig-linux-x86_64-0.13.0.tar.xz && \
@@ -29,6 +23,10 @@ FROM scratch
 WORKDIR /app
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /app/bin .
-COPY --from=builder /app/api/web/assets ./public
+COPY --from=builder /app/api/web/assets ./api/web/assets
+# Copy template views into the container
+COPY --from=builder /app/api/web/views ./api/web/views
+
+
 EXPOSE 8000
 CMD [ "/app/app_prod" ]

@@ -24,6 +24,7 @@ type Config struct {
 	GithubClientID          string
 	GithubClientSecret      string
 	SymmetricKey            string
+	TemplateDir             string
 }
 
 const (
@@ -49,10 +50,10 @@ func initConfig() Config {
 		Port:                    getEnv("PORT", "8080"),
 		DBUser:                  getEnv("DB_USER", "root"),
 		DBPassword:              getEnv("DB_PASSWORD", "mypassword"),
-		DBSource:                getEnvOrError("DB_SOURCE"),
 		SymmetricKey:            getEnvOrError("SYMMETRIC_KEY"),
 		DBName:                  getEnv("DB_NAME", "cars"),
 		CookiesAuthSecret:       getEnv("COOKIES_AUTH_SECRET", "some-very-secret-key"),
+		TemplateDir:             getEnv("TEMPLATE_DIR", "/app/api/web/views"),
 		CookiesAuthAgeInSeconds: getEnvAsInt("COOKIES_AUTH_AGE_IN_SECONDS", twoDaysInSeconds),
 		CookiesAuthIsSecure:     getEnvAsBool("COOKIES_AUTH_IS_SECURE", false),
 		CookiesAuthIsHttpOnly:   getEnvAsBool("COOKIES_AUTH_IS_HTTP_ONLY", false),
@@ -60,6 +61,7 @@ func initConfig() Config {
 		DiscordClientSecret:     getEnvOrError("DISCORD_CLIENT_SECRET"),
 		GithubClientID:          getEnvOrError("GITHUB_CLIENT_ID"),
 		GithubClientSecret:      getEnvOrError("GITHUB_CLIENT_SECRET"),
+		DBSource:                getEnvOrError("DB_SOURCE"),
 	}
 }
 
